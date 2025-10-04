@@ -1,80 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chris Begines</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Begines | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header id="hero">
-    <nav class="main-nav">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#ctf">CTF</a>
-      <a href="#experience">Experience</a>
-      <a href="#awards">Awards</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="intro">
-      <h1>I'm Chris Begines,</h1>
-      <h2>a Security Enthusiast / Developer</h2>
-    </div>
-  </header>
+  <!-- Navigation Bar -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#ctf">CTF Write-ups</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
+  <!-- About Section -->
+  <section id="about" class="section hero">
+    <h1>Hi, I'm Chris Begines</h1>
+    <p>A cybersecurity student and developer passionate about reverse engineering, CTFs, and building secure systems.</p>
+  </section>
+
+  <!-- Projects Section -->
   <section id="projects" class="section">
     <h2>Projects</h2>
     <div class="project-list">
       <div class="project-card">
-        <img src="img/project1.png" alt="Project 1 screenshot" />
-        <h3>Project One</h3>
-        <p>Short description of project one.</p>
+        <h3>Project Title</h3>
+        <p>Brief description of project goes here.</p>
         <a href="#">View More</a>
       </div>
-      <div class="project-card">
-        <img src="img/project2.png" alt="Project 2 screenshot" />
-        <h3>Project Two</h3>
-        <p>Short description of project two.</p>
-        <a href="#">View More</a>
-      </div>
-      <!-- add more cards -->
+      <!-- Add more project cards -->
     </div>
   </section>
 
-  <section id="ctf" class="section">
-    <h2>CTF Write-ups</h2>
-    <ul class="ctf-list">
-      <li><a href="#">Challenge A — Short summary</a></li>
-      <li><a href="#">Challenge B — Short summary</a></li>
-      <!-- more -->
-    </ul>
-  </section>
-
+  <!-- Experience Section -->
   <section id="experience" class="section">
     <h2>Experience</h2>
-    <div class="experience-list">
-      <div class="experience-item">
-        <h3>Job/Role Title</h3>
-        <span>Company — Dates</span>
-        <p>Description of role & achievements.</p>
-      </div>
-      <!-- more items -->
+    <div class="experience-item">
+      <h3>Internship / Job Title</h3>
+      <span>Company — Dates</span>
+      <p>Describe your role, key contributions, and results.</p>
     </div>
   </section>
 
-  <section id="awards" class="section">
-    <h2>Awards & Recognitions</h2>
-    <ul class="award-list">
-      <li>🏆 Award or Achievement 1, Year</li>
-      <li>🏅 Award or Achievement 2, Year</li>
-      <!-- more -->
+  <!-- CTF Section -->
+  <section id="ctf" class="section">
+    <h2>CTF Write-ups</h2>
+    <ul>
+      <li><a href="#">Challenge 1 — Short description</a></li>
+      <li><a href="#">Challenge 2 — Short description</a></li>
     </ul>
   </section>
 
-  <footer id="contact" class="section footer">
-    <p>Made with ❤️ by Chris Begines</p>
-    <p>Social / links: <a href="https://github.com/ChrisBegines123">GitHub</a> | <a href="https://www.linkedin.com/in/chrisbegines/">LinkedIn</a> | <a href="christopherbegines@gmail.com">Email</a></p>
-  </footer>
+  <!-- Awards Section -->
+  <section id="awards" class="section">
+    <h2>Awards</h2>
+    <ul>
+      <li>🏆 Award Name (Year)</li>
+      <li>🏅 Another Award (Year)</li>
+    </ul>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <h2>Certifications</h2>
+    <ul>
+      <li>CompTIA Security+ (Expected 2025)</li>
+      <li>Other certifications…</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section footer">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:christopherbegines@gmail.com">christopherbegines@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/ChrisBegines123">ChrisBegines123</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/chrisbegines/">LinkedIn</a></p>
+  </section>
 
   <script src="js/script.js"></script>
 </body>
