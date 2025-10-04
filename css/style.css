@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset / base */
 * {
   margin: 0;
   padding: 0;
@@ -6,65 +6,66 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: #f1f1f1;
+  font-family: "Segoe UI", Tahoma, Geneva, sans-serif;
+  background-color: #0a0a0a;
+  color: #efefef;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top navigation bar */
+.top-nav {
+  width: 100%;
+  background: rgba(20, 20, 20, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 1rem 0;
+}
+
+.top-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+.top-nav a {
+  color: #efefef;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.top-nav a:hover {
+  color: #ff6a00;
+}
+
+/* Hero / About section */
+.hero {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  padding: 0 1rem;
+  margin-top: 4rem; /* to avoid nav overlay */
+}
+
+.hero-content {
+  max-width: 700px;
   text-align: center;
 }
 
-/* Hero (home page) */
-.hero {
-  max-width: 800px;
-  padding: 2rem;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  color: #ccc;
-}
-
-/* Button row */
-.page-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.btn {
-  padding: 0.8rem 1.5rem;
-  background: #ff6600;
-  color: #fff;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-.btn:hover {
-  background: #e65c00;
-}
-
-/* Other pages */
-.page {
-  max-width: 700px;
-  padding: 2rem;
-}
-.page h1 {
-  font-size: 2.5rem;
+.hero-content h1 {
+  font-size: 2.8rem;
   margin-bottom: 1rem;
+  color: #ffffff;
 }
-.page p {
-  margin-bottom: 2rem;
-  color: #ccc;
+
+.hero-content p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #cccccc;
 }
