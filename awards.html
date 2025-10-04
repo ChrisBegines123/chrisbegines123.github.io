@@ -1,31 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awards | Chris Begines</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards & Honors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(15, 20, 40, 0.95);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0, 255, 200, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #00d4ff;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            border-radius: 2px;
+        }
+
+        .award-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .award-card:hover::before {
+            left: 0;
+        }
+
+        .award-card:hover {
+            transform: translateX(10px);
+            border-color: #00d4ff;
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .award-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .award-title {
+            font-size: 1.4rem;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .award-date {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .award-description {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .placement-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #0a0e27;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .first-place {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        }
+
+        .fifth-place {
+            background: linear-gradient(135deg, #cd7f32, #e8a87c);
+        }
+
+        .links-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(26, 31, 58, 0.4);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+        }
+
+        .links-title {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(15, 20, 40, 0.6);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: rgba(15, 20, 40, 0.9);
+            transform: translateX(5px);
+        }
+
+        .link-item a {
+            color: #00d4ff;
+            text-decoration: none;
+            word-break: break-all;
+            transition: color 0.3s ease;
+        }
+
+        .link-item a:hover {
+            color: #00ff88;
+        }
+
+        .link-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .award-title {
+                font-size: 1.2rem;
+            }
+
+            .nav-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .placement-badge {
+                display: block;
+                margin-left: 0;
+                margin-top: 0.5rem;
+                width: fit-content;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="ctf.html">CTF Write-ups</a></li>
-      <li><a href="awards.html">Awards</a></li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+        <a href="index.html" class="nav-btn">About</a>
+        <a href="experience.html" class="nav-btn">Experience</a>
+        <a href="projects.html" class="nav-btn">Projects</a>
+        <a href="ctf.html" class="nav-btn">CTF</a>
+        <a href="certifications.html" class="nav-btn">Certifications</a>
+        <a href="awards.html" class="nav-btn">Awards</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
 
-  <section>
-    <h1>Awards</h1>
-    <p>Highlight scholarships, CTF wins, or academic awards here.</p>
-  </section>
+    <div class="container">
+        <h1 class="page-title">Awards & Honors</h1>
 
-  <footer>
-    <p>© 2025 Chris Begines</p>
-  </footer>
+        <div class="section">
+            <h2 class="section-title">Honors</h2>
 
-  <script src="js/script.js"></script>
+            <div class="award-card">
+                <div class="award-content">
+                    <div class="award-title">Engineering Scholar at OSU</div>
+                    <div class="award-date">August 2024 – Present</div>
+                    <div class="award-description">
+                        Recognized as an Engineering Scholar at The Ohio State University, demonstrating exceptional academic performance and commitment to the field of engineering and computer science.
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <div class="award-content">
+                    <div class="award-title">2025 ISACA Cybersecurity Fellow</div>
+                    <div class="award-date">Awarded January 2025</div>
+                    <div class="award-description">
+                        Selected as an ISACA Cybersecurity Fellow for Spring 2025, recognizing excellence and potential in the cybersecurity field through the Central Ohio Chapter's prestigious fellowship program.
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <div class="award-content">
+                    <div class="award-title">VICEROY Scholar</div>
+                    <div class="award-date">Awarded October 2024</div>
+                    <div class="award-description">
+                        Awarded VICEROY Scholar status, joining an elite program dedicated to cultivating the next generation of cybersecurity professionals and leaders.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Competition & CTF Achievements</h2>
+
+            <div class="award-card">
+                <div class="award-content">
+                    <div class="award-title">
+                        ERAU-NASA-NSF CTF
+                        <span class="placement-badge fifth-place">5th Place</span>
+                    </div>
+                    <div class="award-date">April 2025</div>
+                    <div class="award-description">
+                        Placed 5th out of 25 universities in the competitive Embry-Riddle Aeronautical University, NASA, and NSF Capture The Flag competition, demonstrating strong cybersecurity skills against top university teams.
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <div class="award-content">
+                    <div class="award-title">
+                        VICEROY Symposium CTF
+                        <span class="placement-badge first-place">1st Place</span>
+                    </div>
+                    <div class="award-date">March 2025</div>
+                    <div class="award-description">
+                        Secured first place at the VICEROY Symposium Capture The Flag competition, showcasing exceptional offensive security and problem-solving capabilities.
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <div class="award-content">
+                    <div class="award-title">Buckeye CTF</div>
+                    <div class="award-date">October 2024</div>
+                    <div class="award-description">
+                        Participated in Buckeye CTF, Ohio State's premier cybersecurity competition, gaining valuable experience in various security challenges and team collaboration.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="links-section">
+            <h3 class="links-title">Recognition & Features</h3>
+            
+            <div class="link-item">
+                <span class="link-icon">🔗</span>
+                <a href="https://icdt.osu.edu/news/2025/03/student-spotlight-meet-christopher-begines-mvi-scholar-headed-new-york-summer" target="_blank" rel="noopener noreferrer">
+                    OSU Student Spotlight - MVI Scholar Feature
+                </a>
+            </div>
+
+            <div class="link-item">
+                <span class="link-icon">🔗</span>
+                <a href="https://www.viceroyscholars.org/cultivating-the-cyber-warriors-of-tomorrow/" target="_blank" rel="noopener noreferrer">
+                    VICEROY Scholars - Cultivating the Cyber Warriors of Tomorrow
+                </a>
+            </div>
+
+            <div class="link-item">
+                <span class="link-icon">🔗</span>
+                <a href="https://engage.isaca.org/centralohiochapter/professionaldevelopment/fellows-program/spring25-fellows" target="_blank" rel="noopener noreferrer">
+                    ISACA Central Ohio - Spring 2025 Fellows Program
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
