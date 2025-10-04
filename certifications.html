@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(15, 20, 40, 0.95);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0, 255, 200, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 4rem;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .cert-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .cert-card:hover::before {
+            left: 0;
+        }
+
+        .cert-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .cert-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cert-logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .cert-logo {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .cert-title {
+            font-size: 1.8rem;
+            color: #00ff88;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .cert-issuer {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .cert-status {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 1rem auto;
+            display: block;
+            width: fit-content;
+        }
+
+        .status-earned {
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #0a0e27;
+        }
+
+        .status-studying {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 2px solid #ffc107;
+        }
+
+        .cert-description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .cert-date {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .skills-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .skills-title {
+            font-size: 1.1rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-card {
+                padding: 2rem;
+            }
+
+            .cert-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .cert-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-btn">About</a>
+        <a href="experience.html" class="nav-btn">Experience</a>
+        <a href="projects.html" class="nav-btn">Projects</a>
+        <a href="ctf.html" class="nav-btn">CTF</a>
+        <a href="certifications.html" class="nav-btn">Certifications</a>
+        <a href="awards.html" class="nav-btn">Awards</a>
+        <a href="contact.html" class="nav-btn">Resume</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Certifications</h1>
+        <p class="page-subtitle">Professional credentials and ongoing certifications</p>
+
+        <div class="certs-grid">
+            <!-- CSXF Certification -->
+            <div class="cert-card">
+                <div class="cert-content">
+                    <div class="cert-logo-container">
+                        <img src="img/csxf_logo.png" alt="CSXF Logo" class="cert-logo">
+                    </div>
+                    <h2 class="cert-title">CSXF</h2>
+                    <p class="cert-issuer">Cybersecurity Fundamentals</p>
+                    <span class="cert-status status-earned">✓ Certified</span>
+                    <p class="cert-description">
+                        Foundational certification demonstrating comprehensive understanding of cybersecurity principles, threat landscapes, and security best practices. Covers essential concepts in network security, risk management, and incident response.
+                    </p>
+                    <div class="skills-section">
+                        <h3 class="skills-title">Key Competencies</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Security Fundamentals</span>
+                            <span class="skill-tag">Risk Management</span>
+                            <span class="skill-tag">Threat Analysis</span>
+                            <span class="skill-tag">Network Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CompTIA Security+ -->
+            <div class="cert-card">
+                <div class="cert-content">
+                    <div class="cert-logo-container">
+                        <img src="img/secplus_logo.png" alt="CompTIA Security+ Logo" class="cert-logo">
+                    </div>
+                    <h2 class="cert-title">CompTIA Security+</h2>
+                    <p class="cert-issuer">CompTIA</p>
+                    <span class="cert-status status-studying">📚 In Progress</span>
+                    <p class="cert-description">
+                        Currently preparing for the CompTIA Security+ certification, a globally recognized credential that validates baseline cybersecurity skills. This certification covers threats, attacks, vulnerabilities, security architecture, operations, and incident response.
+                    </p>
+                    <div class="cert-date">Expected Completion: 2025</div>
+                    <div class="skills-section">
+                        <h3 class="skills-title">Areas of Study</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Threat Management</span>
+                            <span class="skill-tag">Cryptography</span>
+                            <span class="skill-tag">Identity Management</span>
+                            <span class="skill-tag">Security Operations</span>
+                            <span class="skill-tag">Incident Response</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
