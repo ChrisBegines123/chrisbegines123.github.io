@@ -1,49 +1,145 @@
-body, html {
+/* Basic reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body & fonts */
+body {
   font-family: Arial, sans-serif;
-  background: #111;
   color: #f1f1f1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  background-color: #111;
+  line-height: 1.6;
 }
 
-body.fade-in {
-  opacity: 1;
-}
-
-nav {
-  background: #222;
-  padding: 1rem;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
+a {
   color: #f1f1f1;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
-
-nav a:hover {
+a:hover {
   color: #ff6600;
 }
 
-header, section {
+/* Header / Hero */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 3rem;
+  background: #111;
+  position: relative;
+  padding: 2rem;
 }
 
-footer {
-  background: #222;
-  text-align: center;
-  padding: 1rem;
+.main-nav {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+.main-nav a {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+/* Intro text */
+.intro h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.intro h2 {
+  font-size: 1.5rem;
+  color: #aaa;
+}
+
+/* Sections */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Projects */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
+}
+.project-card {
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.project-card img {
+  width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.project-card h3 {
+  margin: 1rem 0 0.5rem;
+}
+.project-card p {
+  color: #ccc;
+}
+.project-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* CTF list */
+.ctf-list {
+  margin-top: 2rem;
+  list-style: none;
+}
+.ctf-list li {
+  margin-bottom: 1rem;
+}
+
+/* Experience */
+.experience-list {
+  margin-top: 2rem;
+}
+.experience-item {
+  margin-bottom: 2rem;
+}
+.experience-item h3 {
+  font-size: 1.3rem;
+}
+.experience-item span {
+  display: block;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+/* Awards */
+.award-list {
+  margin-top: 2rem;
+  list-style: none;
+}
+.award-list li {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+/* Footer / Contact */
+.footer {
+  text-align: center;
+  background: #222;
+  color: #ccc;
+}
+.footer a {
+  color: inherit;
+  margin: 0 0.5rem;
+}
+
+/* Fade-in transition (optional) */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+body.fade-in {
+  opacity: 1;
 }
