@@ -5,86 +5,66 @@
   box-sizing: border-box;
 }
 
-/* Body */
 body {
   font-family: Arial, sans-serif;
   background: #111;
   color: #f1f1f1;
-  line-height: 1.6;
-  scroll-behavior: smooth;
-}
-
-/* Navigation */
-.main-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #222;
-  padding: 1rem;
-  z-index: 1000;
-}
-.main-nav ul {
   display: flex;
   justify-content: center;
-  list-style: none;
-  gap: 2rem;
-}
-.main-nav a {
-  color: #f1f1f1;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-.main-nav a:hover {
-  color: #ff6600;
-}
-
-/* Sections */
-.section {
-  padding: 6rem 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+  align-items: center;
+  min-height: 100vh;
   text-align: center;
 }
-.section h2 {
-  margin-bottom: 1rem;
+
+/* Hero (home page) */
+.hero {
+  max-width: 800px;
+  padding: 2rem;
 }
 
-/* Hero/About */
-.hero {
-  padding-top: 8rem;
-}
 .hero h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.hero p {
-  font-size: 1.2rem;
-  color: #bbb;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Social Buttons */
-.social-buttons {
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+/* Button row */
+.page-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
 }
+
 .btn {
   padding: 0.8rem 1.5rem;
   background: #ff6600;
   color: #fff;
   border-radius: 5px;
   font-weight: bold;
+  text-decoration: none;
   transition: background 0.3s ease;
 }
 .btn:hover {
   background: #e65c00;
 }
 
-/* Footer */
-.footer {
-  background: #222;
-  padding: 3rem 1rem;
-  margin-top: 3rem;
+/* Other pages */
+.page {
+  max-width: 700px;
+  padding: 2rem;
+}
+.page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.page p {
+  margin-bottom: 2rem;
+  color: #ccc;
 }
