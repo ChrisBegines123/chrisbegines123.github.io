@@ -1,31 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experience | Chris Begines</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(15, 20, 40, 0.95);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0, 255, 200, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #00d4ff, #00ff88);
+        }
+
+        .experience-card {
+            position: relative;
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .experience-card:hover::before {
+            left: 0;
+        }
+
+        .experience-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -36px;
+            top: 2rem;
+            width: 16px;
+            height: 16px;
+            background: #00d4ff;
+            border: 3px solid #0a0e27;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .header-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .company-name {
+            font-size: 1.8rem;
+            color: #00ff88;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .job-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-date {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        .location {
+            color: #b0b0b0;
+            margin-right: 1rem;
+        }
+
+        .responsibilities {
+            margin-top: 1.5rem;
+        }
+
+        .responsibility-item {
+            padding: 0.8rem 0;
+            color: #b0b0b0;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .responsibility-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-size: 1.2rem;
+        }
+
+        .current-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #0a0e27;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-dot {
+                left: -26px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .company-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .company-name {
+                font-size: 1.4rem;
+            }
+
+            .job-title {
+                font-size: 1.1rem;
+            }
+
+            .nav-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="ctf.html">CTF Write-ups</a></li>
-      <li><a href="awards.html">Awards</a></li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+        <a href="index.html" class="nav-btn">About</a>
+        <a href="experience.html" class="nav-btn">Experience</a>
+        <a href="projects.html" class="nav-btn">Projects</a>
+        <a href="ctf.html" class="nav-btn">CTF</a>
+        <a href="certifications.html" class="nav-btn">Certifications</a>
+        <a href="awards.html" class="nav-btn">Awards</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
 
-  <section>
-    <h1>Work Experience</h1>
-    <p>List your internships, jobs, and responsibilities here.</p>
-  </section>
+    <div class="container">
+        <h1 class="page-title">Professional Experience</h1>
 
-  <footer>
-    <p>© 2025 Chris Begines</p>
-  </footer>
+        <div class="timeline">
+            <!-- CSFI -->
+            <div class="experience-card">
+                <div class="timeline-dot"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <img src="img/csfi_logo.png" alt="CSFI Logo" class="company-logo">
+                        <div class="header-info">
+                            <div class="company-name">Cyber Security Forum Initiative (CSFI)</div>
+                            <div class="job-title">Cyber Security Threat Intelligence Intern<span class="current-badge">Current</span></div>
+                            <div class="job-type">Remote</div>
+                            <div class="location-date">
+                                <span class="location">Remote</span>
+                                <span class="date">September 2025 – Present</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="responsibilities">
+                        <div class="responsibility-item">Utilizing MITRE ATT&CK framework to generate Requests for Information (RFIs)</div>
+                        <div class="responsibility-item">Conducting threat intelligence analysis to identify emerging cybersecurity threats</div>
+                        <div class="responsibility-item">Collaborating with security professionals to enhance threat detection capabilities</div>
+                    </div>
+                </div>
+            </div>
 
-  <script src="js/script.js"></script>
+            <!-- Griffiss Institute -->
+            <div class="experience-card">
+                <div class="timeline-dot"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <img src="img/griffiss_logo.png" alt="Griffiss Institute Logo" class="company-logo">
+                        <div class="header-info">
+                            <div class="company-name">Griffiss Institute</div>
+                            <div class="job-title">Cyber Operations Intern</div>
+                            <div class="job-type">Gov Contractor</div>
+                            <div class="location-date">
+                                <span class="location">Rome, NY</span>
+                                <span class="date">June 2025 – August 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="responsibilities">
+                        <div class="responsibility-item">Worked on Cyber Security research pertaining to vCDS systems with ARM CCA, Docker and seL4</div>
+                        <div class="responsibility-item">Participated in timed Blue Edge real world cyber operation exercises including a 48 hour capstone</div>
+                        <div class="responsibility-item">Applied hands-on cybersecurity techniques in government contractor environment</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AFRL -->
+            <div class="experience-card">
+                <div class="timeline-dot"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <img src="img/afrl_logo.png" alt="AFRL Logo" class="company-logo">
+                        <div class="header-info">
+                            <div class="company-name">AFRL Headquarters</div>
+                            <div class="job-title">Wright Scholar Intern</div>
+                            <div class="job-type">Gov Contractor</div>
+                            <div class="location-date">
+                                <span class="location">Dayton, OH</span>
+                                <span class="date">June 2023 – August 2023, June 2024 – August 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="responsibilities">
+                        <div class="responsibility-item">Developed a Radial Maze simulation in Unity and C# to assess anxiety in VR task completion</div>
+                        <div class="responsibility-item">Contributed to an Aerial Refueling simulation for AFLCMC, aiding boom automation research</div>
+                        <div class="responsibility-item">Applied game development and programming skills to defense research projects</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donatos Pizza -->
+            <div class="experience-card">
+                <div class="timeline-dot"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <img src="img/donatos_logo.png" alt="Donatos Pizza Logo" class="company-logo">
+                        <div class="header-info">
+                            <div class="company-name">Donatos Pizza</div>
+                            <div class="job-title">Associate → Manager</div>
+                            <div class="job-type">Food Service</div>
+                            <div class="location-date">
+                                <span class="location">Columbus, OH</span>
+                                <span class="date">April 2022 – June 2023, December 2023 – April 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="responsibilities">
+                        <div class="responsibility-item">Led a team of employees, ensuring smooth daily operations and inventory management</div>
+                        <div class="responsibility-item">Managed store finances, cash flow, and balanced daily sales</div>
+                        <div class="responsibility-item">Developed leadership and team management skills in fast-paced environment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
