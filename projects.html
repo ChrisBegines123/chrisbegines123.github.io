@@ -1,31 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Chris Begines</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(15, 20, 40, 0.95);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0, 255, 200, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 4rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            left: 0;
+        }
+
+        .project-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 250px;
+            background: rgba(15, 20, 40, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-logo {
+            max-width: 200px;
+            max-height: 180px;
+            object-fit: contain;
+            padding: 1rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            color: #00ff88;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .tech-title {
+            font-size: 1rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 212, 255, 0.25);
+            border-color: #00d4ff;
+        }
+
+        .project-features {
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            padding: 0.5rem 0;
+            color: #b0b0b0;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-size: 1.2rem;
+        }
+
+        .project-type {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: #0a0e27;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="ctf.html">CTF Write-ups</a></li>
-      <li><a href="awards.html">Awards</a></li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+        <a href="index.html" class="nav-btn">About</a>
+        <a href="experience.html" class="nav-btn">Experience</a>
+        <a href="projects.html" class="nav-btn">Projects</a>
+        <a href="ctf.html" class="nav-btn">CTF</a>
+        <a href="certifications.html" class="nav-btn">Certifications</a>
+        <a href="awards.html" class="nav-btn">Awards</a>
+        <a href="contact.html" class="nav-btn">Resume</a>
+    </nav>
 
-  <section>
-    <h1>Projects</h1>
-    <p>Here are some of my projects. (Replace this with real descriptions and GitHub links.)</p>
-  </section>
+    <div class="container">
+        <h1 class="page-title">Projects</h1>
+        <p class="page-subtitle">Personal projects and technical implementations</p>
 
-  <footer>
-    <p>© 2025 Chris Begines</p>
-  </footer>
+        <div class="projects-grid">
+            <!-- Vaultwarden Project -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="img/vaultwarden_logo.png" alt="Vaultwarden Logo" class="project-logo">
+                </div>
+                <div class="project-content">
+                    <span class="project-type">Self-Hosted Security</span>
+                    <h2 class="project-title">Self-Hosted Vaultwarden Password Manager</h2>
+                    <p class="project-description">
+                        Designed and deployed a secure, self-hosted password management solution using Vaultwarden on a Raspberry Pi. Implemented containerization with Docker for isolated service management and configured Cloudflare networking to enable secure remote access while maintaining local control of sensitive credential data.
+                    </p>
 
-  <script src="js/script.js"></script>
+                    <div class="project-features">
+                        <div class="feature-item">Containerized deployment using Docker for easy maintenance and portability</div>
+                        <div class="feature-item">Cloudflare networking integration for secure external access</div>
+                        <div class="feature-item">Raspberry Pi hardware implementation for low-power, always-on operation</div>
+                        <div class="feature-item">End-to-end encrypted password storage with local data sovereignty</div>
+                    </div>
+
+                    <div class="tech-stack">
+                        <h3 class="tech-title">Technologies Used</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">Cloudflare</span>
+                            <span class="tech-tag">Vaultwarden</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Networking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
