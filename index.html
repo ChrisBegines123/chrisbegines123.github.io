@@ -138,15 +138,11 @@
             width: 100%;
             height: 200px;
             border-radius: 12px;
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center top;
             background: #1a1f3a;
             border: 2px solid rgba(0, 212, 255, 0.2);
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #00d4ff;
-            font-size: 1.5rem;
             cursor: pointer;
         }
 
@@ -342,6 +338,11 @@
             <div class="gallery">
                 <img src="img/viceroy.webp" alt="Description" class="gallery-item" onclick="openModal(this)">
                 <img src="img/group.webp" alt="Description" class="gallery-item" onclick="openModal(this)">
+            </div>
+
+            <div id="imageModal" class="modal" onclick="closeModal()">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
             </div>
 
             <div class="social-container">
